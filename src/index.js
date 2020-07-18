@@ -1,7 +1,9 @@
 const Discord = require('discord.js');
+require('dotenv').config();
 const client = new Discord.Client();
 
 const fs = require('fs')
+
 // Obtengo las civilizaciones
 const jsonString = fs.readFileSync('src/civilizaciones/civilizacion.json','utf-8')
 const civilizaciones = JSON.parse(jsonString)
@@ -14,17 +16,14 @@ client.on('ready', async () => {
   //await client.user.setAvatar('./src/img/monje.png')
 });
 
-// Create an event listener for messages
-client.on('message', message => {
-    // If the message is "what is my avatar"
-    if (message.content === ':miavatar') {
-        // Send the user's avatar URL
-        message.reply(message.author.displayAvatarURL());
-    }
-});
-
 // Obtener nomber de todas las civilizaciones
 client.on('message', msg => {
+    
+    if (message.content === ':miavatar') {
+        message.reply(message.author.displayAvatarURL());
+    }
+
+
     if (msg.content.trim().toUpperCase().search(':CIVI') === 0) {
         msg.delete();
         const civiUser = msg.content.trim().toUpperCase().split(':CIVI ');
