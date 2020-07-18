@@ -18,15 +18,14 @@ client.on('ready', async () => {
 
 // Obtener nomber de todas las civilizaciones
 client.on('message', msg => {
-    
-    if (message.content === ':miavatar') {
-        message.reply(message.author.displayAvatarURL());
+    // Comandos de ayuda para ejecutar
+    if (msg.content.toUpperCase() === '/HELP') {
+        msg.channel.send(`**/help**\t\t\t\t\t\t*-- Comandos disponibles para interactuar con el Bot.*\n**/civi**\t\t\t\t\t\t   *-- Visualizar el nombre de todas las civilizaciones.*\n**/civi [Nombre] **\t*-- Visualizar el detalle de una civilizacion.*\n\t\t  [Nombre] Ej: *Britanos*\n`);
     }
 
-
-    if (msg.content.trim().toUpperCase().search(':CIVI') === 0) {
+    if (msg.content.trim().toUpperCase().search('/CIVI') === 0) {
         msg.delete();
-        const civiUser = msg.content.trim().toUpperCase().split(':CIVI ');
+        const civiUser = msg.content.trim().toUpperCase().split('/CIVI ');
 
         if (civiUser.length > 1) {
 
@@ -37,7 +36,7 @@ client.on('message', msg => {
                 if (civi.length === 0) {
                     msg.channel.send(`*No se encontro civilizacion* **${civiUser[1]}** \n*Para ver todas las civilizaciones escribri* **:civi**`);
                 } else {
-                    msg.channel.send(`**${civi[0].Nombre}** :${civi[0].emoji}:\nEspecialidad: *${civi[0].Especialidad}*\nBonificacion:\n- *${civi[0].CiviBonus.join(`*\n- *`)}*\nTeam bonus: *${civi[0].TeamBonus}*`)
+                    msg.channel.send(`**${civi[0].Nombre}** :${civi[0].emoji}:\nEspecialidad: *${civi[0].Especialidad}*\nBonificacion:\n\b- *${civi[0].CiviBonus.join(`*\n- *`)}*\nTeam bonus: *${civi[0].TeamBonus}*`)
                 }
             } else {
                 msg.channel.send(`*Para ver todas las civilizaciones escribri* **:civi**`);

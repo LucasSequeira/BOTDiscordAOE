@@ -1,0 +1,27 @@
+{
+  "name": "aoebotapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasSequeira/BOTDiscordAOE.git"
+  },
+  "author": "https://github.com/LSequeiraWeb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LucasSequeira/BOTDiscordAOE/issues"
+  },
+  "homepage": "https://github.com/LucasSequeira/BOTDiscordAOE#readme"
+}
