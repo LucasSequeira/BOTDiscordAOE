@@ -1,0 +1,28 @@
+[
+    {
+        "Nombre": "Bizantinos",
+        "Especialidad": "Defensa",
+        "CiviBonus": 
+            [
+                "Edificios tienen +10% (Alta Edad Media)/+20% (Ed.Feudal)/+30% (Ed. Castillos)/+40% (Ed. Imperial) Puntos de Resistencia.",
+                "Camellos, Guerrilleros y Lanceros cuestan -25%.",
+                "Brulotes +20% (de velocidad) de ataque.",
+                "Advanzar a la Edad Imperial cuesta -33%.",
+                "Guardia Urbana gratis."
+            ],
+        "TeamBonus": "Monjes sanan 50% más rápidos.",
+        "emoji": "shield"
+    },
+    {
+        "Nombre":"Britanos",
+        "Especialidad": "Arqueros",
+        "CiviBonus": 
+            [
+                "Centros urbanos cuestan -50% madera en Edad de los Castillos.",
+                "Arqueros a pie (excepto guerrilleros) tienen +1 de alcance en Castillos y +1 en Imperial (+2 en total).",
+                "Pastores trabajan 25% más rápido."
+            ],
+        "TeamBonus": "Galerías de tiro con arco funcionan 20% más rápido.",
+        "emoji": "bow_and_arrow"
+    }
+]
