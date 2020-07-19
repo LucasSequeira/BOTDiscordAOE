@@ -2,27 +2,57 @@
     {
         "Nombre": "Bizantinos",
         "Especialidad": "Defensa",
-        "CiviBonus": 
-            [
-                "Edificios tienen +10% (Alta Edad Media)/+20% (Ed.Feudal)/+30% (Ed. Castillos)/+40% (Ed. Imperial) Puntos de Resistencia.",
-                "Camellos, Guerrilleros y Lanceros cuestan -25%.",
-                "Brulotes +20% (de velocidad) de ataque.",
-                "Advanzar a la Edad Imperial cuesta -33%.",
-                "Guardia Urbana gratis."
-            ],
-        "TeamBonus": "Monjes sanan 50% más rápidos.",
+        "UnidadUnica": {
+            "Nombre": "Catafracta",
+            "Detalle": "Caballería con bonificación de ataque contra la infantería."
+        },
+        "TecnologiaUnica": [
+            {
+                "Nombre": "Fuego Griego", 
+                "Detalle": "los Brulotes obtienen +1 de alcance."
+            },
+            {
+                "Nombre": "Logística", 
+                "Detalle": "Las Catafractas hacen daño a los enemigos adyacentes."
+            }
+        ],
+        "CiviBonus": [
+            "Edificios tienen +10%(Alta Edad Media) +20% (Ed.Feudal) +30% (Ed. Castillos) +40% (Ed. Imperial) Puntos de Resistencia.",
+            "Camellos, Guerrilleros y Lanceros cuestan -25%.",
+            "Brulotes +20% (de velocidad) de ataque.",
+            "Advanzar a la Edad Imperial cuesta -33%.",
+            "Guardia Urbana gratis."
+        ],
+        "TeamBonus": [
+            "Monjes sanan 50% más rápidos."
+        ],
         "emoji": "shield"
     },
     {
         "Nombre":"Britanos",
         "Especialidad": "Arqueros",
-        "CiviBonus": 
-            [
-                "Centros urbanos cuestan -50% madera en Edad de los Castillos.",
-                "Arqueros a pie (excepto guerrilleros) tienen +1 de alcance en Castillos y +1 en Imperial (+2 en total).",
-                "Pastores trabajan 25% más rápido."
-            ],
-        "TeamBonus": "Galerías de tiro con arco funcionan 20% más rápido.",
+        "UnidadUnica": {
+            "Nombre": "Arquero de tiro largo",
+            "Detalle": "Es un arquero con un gran alcance. Puede alcanzar hasta 11 de alcance."
+        },
+        "TecnologiaUnica": [
+            {
+                "Nombre": "Voluntarios de Caballería", 
+                "Detalle": "Los arqueros a pie tienen +1 de alcance y las Torres +2 de ataque."
+            },
+            {
+                "Nombre": "Warwolf", 
+                "Detalle": "Los Lanzapiedras obtienen daño en área y +100% de puntería contra unidades."
+            }
+        ],
+        "CiviBonus": [
+            "Centros urbanos cuestan -50% madera en Edad de los Castillos.",
+            "Arqueros a pie (excepto guerrilleros) tienen +1 de alcance en Castillos y +1 en Imperial (+2 en total).",
+            "Pastores trabajan 25% más rápido."
+        ],
+        "TeamBonus": [
+            "Galerías de tiro con arco funcionan 20% más rápido."
+        ],
         "emoji": "bow_and_arrow"
     }
 ]
