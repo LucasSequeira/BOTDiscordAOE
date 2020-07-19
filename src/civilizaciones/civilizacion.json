@@ -1,7 +1,9 @@
 [
     {
         "Nombre": "Bizantinos",
-        "Especialidad": "Defensa",
+        "Especialidad": [
+            "Defensa"
+        ],
         "UnidadUnica": {
             "Nombre": "Catafracta",
             "Detalle": "Caballería con bonificación de ataque contra la infantería."
@@ -30,7 +32,9 @@
     },
     {
         "Nombre":"Britanos",
-        "Especialidad": "Arqueros",
+        "Especialidad": [
+            "Arqueros"
+        ],
         "UnidadUnica": {
             "Nombre": "Arquero de tiro largo",
             "Detalle": "Es un arquero con un gran alcance. Puede alcanzar hasta 11 de alcance."
