@@ -40,7 +40,21 @@ client.on('message', msg => {
                 if (civi.length === 0) {
                     msg.channel.send(`*No se encontro civilizacion* **${civiUser[1]}** \n*Para ver todas las civilizaciones escribri* **:civi**`);
                 } else {
-                    msg.channel.send(`**${civi[0].Nombre}** :${civi[0].emoji}:\nEspecialidad: *${civi[0].Especialidad}*\nBonificacion:\n\b- *${civi[0].CiviBonus.join(`*\n- *`)}*\nTeam bonus: *${civi[0].TeamBonus}*`)
+                    const tecnologia = civi[0].TecnologiaUnica.map(t => {
+                        return `${t.Nombre}: ${t.Detalle}`
+                    })
+
+                    msg.channel.send(
+`**${civi[0].Nombre}** :${civi[0].emoji}:
+Especialidad: *${civi[0].Especialidad}*
+Unidad unica: *${civi[0].UnidadUnica.Nombre}*
+            - *${civi[0].UnidadUnica.Detalle}*
+Tecnologias unicas:
+            - *${tecnologia.join(`*\n\t\t\t- *`)}*
+Bonificacion:
+            - *${civi[0].CiviBonus.join(`*\n\t\t\t- *`)}*
+Team bonus:
+            - *${civi[0].TeamBonus.join(`*\n\t\t\t- *`)}*`)
                 }
             } else {
                 msg.channel.send(`*Para ver todas las civilizaciones escribri* **:civi**`);
