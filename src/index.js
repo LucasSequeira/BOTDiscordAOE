@@ -1,16 +1,15 @@
-const Discord = require('discord.js');
 require('dotenv').config();
+const Discord = require('discord.js');
 const fs = require('fs')
+
 const client = new Discord.Client();
 
-const { getCivilizaciones } = require('./civilizaciones/getCivilizaciones');
-
-//getCivilizaciones();
+// Obtengo los comandos
+const {cmd_help,cmd_civi_notfound,cmd_civi_success,cmd_civi_list} = require("./comandos")
 
 // Obtengo las civilizaciones
 const jsonString = fs.readFileSync('src/civilizaciones/civilizacion.json','utf-8')
 const civilizaciones = JSON.parse(jsonString)
-
 
 client.on('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -21,51 +20,32 @@ client.on('ready', async () => {
 
 // Obtener nomber de todas las civilizaciones
 client.on('message', msg => {
-    // Comandos de ayuda para ejecutar
+    // Comandos /help
     if (msg.content.toUpperCase() === '/HELP') {
         msg.delete();
-        msg.channel.send(`**/help**\t\t\t\t\t\t*-- Comandos disponibles para interactuar con el Bot.*\n**/civi**\t\t\t\t\t\t  *-- Visualizar el nombre de todas las civilizaciones.*\n**/civi [Nombre] **\t *-- Visualizar el detalle de una civilizacion.*\n\t\t  [Nombre] Ej: *Britanos*\n`);
+        msg.channel.send(cmd_help);
+        return;
     }
-
+    // Comandos /civi || /civi NOMBRE
     if (msg.content.trim().toUpperCase().search('/CIVI') === 0) {
         msg.delete();
         const civiUser = msg.content.trim().toUpperCase().split('/CIVI ');
-
-        if (civiUser.length > 1) {
-
-            if (civiUser[1].trim() !== '') {
-                
-                const civi = civilizaciones.filter(civi => (civi.Nombre.toUpperCase() === civiUser[1].toUpperCase().trim()) )
-                
-                if (civi.length === 0) {
-                    msg.channel.send(`*No se encontro civilizacion* **${civiUser[1]}** \n*Para ver todas las civilizaciones escribri* **:civi**`);
-                } else {
-                    const tecnologia = civi[0].TecnologiaUnica.map(t => {
-                        return `${t.Nombre}: ${t.Detalle}`
-                    })
-
-                    msg.channel.send(
-`**${civi[0].Nombre}** :${civi[0].emoji}:
-Especialidad: *${civi[0].Especialidad}*
-Unidad unica: *${civi[0].UnidadUnica.Nombre}*
-            - *${civi[0].UnidadUnica.Detalle}*
-Tecnologias unicas:
-            - *${tecnologia.join(`*\n\t\t\t- *`)}*
-Bonificacion:
-            - *${civi[0].CiviBonus.join(`*\n\t\t\t- *`)}*
-Team bonus:
-            - *${civi[0].TeamBonus.join(`*\n\t\t\t- *`)}*`)
-                }
-            } else {
-                msg.channel.send(`*Para ver todas las civilizaciones escribri* **:civi**`);
-            }
-
-        } else {
-            const text = civilizaciones.map(civi => (`**${civi.Nombre}** :${civi.emoji}: *${civi.Especialidad}*`));
-            msg.channel.send(text.toString().replace(',','\n'));
+        // Comando /civi
+        if (civiUser.length === 1) {
+            msg.channel.send(cmd_civi_list(civilizaciones));
+            return;
         }
+        const civi = civilizaciones.filter(civi => (civi.Nombre.toUpperCase() === civiUser[1].toUpperCase().trim()) )  
+        // Civilizacion no encontrada
+        if (civi.length === 0) {
+            msg.channel.send(cmd_civi_notfound(civiUser[1]));
+            return;
+        } 
+        // Comdando /civi NOMBBRE
+        msg.channel.send(cmd_civi_success(civi[0]))
         msg.channel.send(`--------------------`);
+        return;
     } 
-  });
+});
 
 client.login(process.env.TOKEN);
