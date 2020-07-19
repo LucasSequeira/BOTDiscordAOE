@@ -1,8 +1,11 @@
 const Discord = require('discord.js');
 require('dotenv').config();
+const fs = require('fs')
 const client = new Discord.Client();
 
-const fs = require('fs')
+const { getCivilizaciones } = require('./civilizaciones/getCivilizaciones');
+
+//getCivilizaciones();
 
 // Obtengo las civilizaciones
 const jsonString = fs.readFileSync('src/civilizaciones/civilizacion.json','utf-8')
@@ -20,7 +23,8 @@ client.on('ready', async () => {
 client.on('message', msg => {
     // Comandos de ayuda para ejecutar
     if (msg.content.toUpperCase() === '/HELP') {
-        msg.channel.send(`**/help**\t\t\t\t\t\t*-- Comandos disponibles para interactuar con el Bot.*\n**/civi**\t\t\t\t\t\t   *-- Visualizar el nombre de todas las civilizaciones.*\n**/civi [Nombre] **\t*-- Visualizar el detalle de una civilizacion.*\n\t\t  [Nombre] Ej: *Britanos*\n`);
+        msg.delete();
+        msg.channel.send(`**/help**\t\t\t\t\t\t*-- Comandos disponibles para interactuar con el Bot.*\n**/civi**\t\t\t\t\t\t  *-- Visualizar el nombre de todas las civilizaciones.*\n**/civi [Nombre] **\t *-- Visualizar el detalle de una civilizacion.*\n\t\t  [Nombre] Ej: *Britanos*\n`);
     }
 
     if (msg.content.trim().toUpperCase().search('/CIVI') === 0) {
